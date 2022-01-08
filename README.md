@@ -588,7 +588,7 @@ bC.pWdeMdPvrY213A.SiG9Km3A+R6OzWZ9.eoRy01dPu7M+6u4+Ov8lVfC
 ![](./media/TR09MaxMSPPRMFileGenerator.png)
 
 ## discussion
-Having made the parameters in the .PRM-files available to be adjusted through maxMSP opens it up for a more automated computer generative approach to programming drum patterns. it could be argued that the proces of actually working with this is cumbersome in comparison to using the build in sequencer or triggering the drums from a DAW. Using multisliders as a way to manipulate the many parameters in the PRM-files could be exchanged with other forms of altering the parameters. I am curious of what kinds of sonic expression can be evoked through this new approach to composing on the TR09.
+Having made the parameters in the .PRM-files available to be adjusted through maxMSP opens it up for a more automated computer generative approach to programming drum patterns. it could be argued that the proces of actually working with this is cumbersome in comparison to using the build in sequencer or triggering the drums from a DAW. Using multisliders as a way to manipulate the many parameters in the PRM-files could be exchanged with other forms of altering the parameters. I am curious of what kinds of sonic expression can be evoked through this new approach to composing on the TR09. Making this code into a Max for Live device would make this more accessable through Ableton Live.
 
 ## Source
 http://sunshine-jones.com/wp-content/uploads/2017/11/TR-09-Users-Guide.pdf
