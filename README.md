@@ -1,6 +1,5 @@
 # MaxMSP_TR09_backupAsComposition
-This repository investigates core elements of the popular drummachine clone TR09 and in particulars its backupsystem of drum patterns. This feature of the TR09 enables patterns to be archived on the users computer as an .PRM-file. However what if it was possible to utilize this feature in a more automatic computationelly generative way?
-
+This repository investigates core elements of the popular drummachine clone TR09 and in particulars its backupsystem of drum patterns. This feature of the TR09 enables patterns to be archived on the users computer as an .PRM-file.
 ```
 END_STEP	= 23
 SCALE	= 2
@@ -40,7 +39,10 @@ STEP 30	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 STEP 31	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 STEP 32	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 ```
+However what if it was possible to mod this feature and transform its function into a more constructive rather than archival mode of operation? A postdigital, postphenomenological interaction between user and systems. what sort of sonic possibility would arise from this approach from a compositional perspective?
 
+## PRM-file generator using Node for Max
+The development of this patch was centered around the structure of the .PRM files in which the patterns of TR09 is stored. In order to be able to generate your own .PRM files I used the Node for Max objects in Max/MSP as a way to create max messages with variables of the various percussive elements as well as the initial setups of shuffle and sequencer length etc. I created the javaScript file would be accessable from within Max via the "node.script TR09Mod.js".
 
 ```
 const maxApi = require('max-api');
@@ -183,6 +185,9 @@ maxApi.addHandler('Step_32', (BD_32, SD_32, LT_32, MT_32, HT_32, RS_32, HC_32, C
 });
 
 ```
+## Patcher
+The patcher consists off...
+
 
 ## Source
 http://sunshine-jones.com/wp-content/uploads/2017/11/TR-09-Users-Guide.pdf
