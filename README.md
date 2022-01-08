@@ -1,5 +1,5 @@
 # MaxMSP_TR09_backupAsComposition
-This repository investigates core elements of the popular Roland drummachine [TR09](https://www.roland.com/global/products/tr-09/) and in particulars its backupsystem of drum patterns. This feature of the TR09 enables patterns to be archived on the users computer as an [.PRM-file](https://www.openthefile.net/extension/prm).
+This repository investigates core elements of the popular Roland drummachine [TR09](https://www.roland.com/global/products/tr-09/) and in particulars its backupsystem of drum patterns. This feature of the TR09 enables patterns to be archived on the users computer as [.PRM-files](https://www.openthefile.net/extension/prm).
 ```
 END_STEP	= 23
 SCALE	= 2
@@ -39,6 +39,8 @@ STEP 30	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 STEP 31	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 STEP 32	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 ```
+In order to access these files the user must first connect the TR09 with a USB cable to a computer. Secondly the user must restart the TR09 while holding down the start button. All the lights will come on, and this means the TR09 is awaiting connection to the computer, after which a drive will become visible on the computer containing the .PRM-files.
+
 However what if it was possible to mod this feature and transform its function into a more constructive rather than archival mode of operation? A postdigital, postphenomenological interaction between user and systems. what sort of sonic possibility would arise from this approach from a compositional perspective?
 
 ## PRM-file generator using Node for Max
@@ -186,7 +188,7 @@ maxApi.addHandler('Step_32', (BD_32, SD_32, LT_32, MT_32, HT_32, RS_32, HC_32, C
 
 ```
 ## Patcher
-The patcher consists off...
+Surrounding the node.script object is other max objects that serve to assemble the generated messages from the node script into the max text object as well as multisliders as a way to easily set the many parameters.
 
 
 ## Source
