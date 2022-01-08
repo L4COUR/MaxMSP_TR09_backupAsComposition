@@ -1,5 +1,5 @@
 # MaxMSP_TR09_backupAsComposition
-This repository investigates core elements of the popular drummachine clone TR09 and in particulars its backupsystem of drum patterns. This feature of the TR09 enables patterns to be archived on the users computer as an .PRM-file.
+This repository investigates core elements of the popular drummachine clone TR09 and in particulars its backupsystem of drum patterns. This feature of the TR09 enables patterns to be archived on the users computer as an [.PRM-file](https://www.openthefile.net/extension/prm).
 ```
 END_STEP	= 23
 SCALE	= 2
