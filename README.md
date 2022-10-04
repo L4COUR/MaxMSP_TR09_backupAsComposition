@@ -1,14 +1,40 @@
-# MaxMSP_TR09_backupAsComposition
-This repository investigates core elements of the popular Roland drummachine [TR09](https://www.roland.com/global/products/tr-09/) and in particulars its backupsystem of drum patterns. This feature of the TR09 enables patterns to be archived on the users computer as [.PRM-files](https://www.openthefile.net/extension/prm).
+# MaxMSP TR09: Backup as Composition
 
-<iframe src="https://player.vimeo.com/video/663785944?h=2edca95402" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-<p><a href="https://vimeo.com/663785944">Using the Roland TR09 patternBackupsystem for composition</a> from <a href="https://vimeo.com/l4cour">La Cour</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+In this project I want to investigate hidden interactions and music compository possibilities  within the Roland [TR-09](https://www.roland.com/global/products/tr-09/) drum machines data-backup & restore system.
+
+## TR-09 Rythm Composer
+![](https://static.roland.com/assets/images/products/gallery/tr-09_top_gal.jpg)
+The TR-09 was released as part of the Roland boutique series in 2017. TR-09 is a modern day recreation of the famous TR-909 drum machine that came out back in 1983. This updated version of the classic drummachine features Roland's ACB (Analog Circuit Behavior) technology which offers;
+
+>  (...) precise control over an array of drum parameters and the ability to keep playing when switching modes, the TR-09 may be compact, but it still has the power to move people. Studio sessions are well catered for too, with four separate outputs via USB audio, external instrument control via a trigger output and USB MIDI.
+
+![](./media/TR09PatternStorage.png)
+
+The usage of this drum machine is to compose rythmical patterns using the sequencer that is stored and can be recalled from one of the two banks that each contain three pattern groups that can store 16 rythm patterns, giving the user a total of 96 possible rythm compositions.
+
+A Pattern consists of 16 steps that can all be read by the 13 channels being; Bass Drum, Snare Drum, Low Tom, Mid Tom, Hi Tom, Rim, Clap, Closed HH, Open HH, Crash, Ride, Accent, Trigger. The 16 steps are read from left to right as traditional musical notation.  
+
+![](./media/TR-09MusicalNotation.png)
+
+## Data backup of patterns
+
+Backing up patterns from the original TR-909 back in 1983 would be a cumbersome proces in comparison to our modern day standards. This would have involved MIDI sysex (System Exclusive Messages) exchanges and replaying the raw pattern data onto cassettetape.
+
+![](https://www.bome.com/bome/images/products_sendsx_screenshot.png)
+
+![](./media/Datasette.png)
+
+While these methods can still be used with the newer TR-09 the USB interface makes backing up patterns much faster and easier. All Patterns are stored on the internal memory of the TR-09 as [.PRM-files](https://www.openthefile.net/extension/prm). A parameter file saved in plain text format. The first five lines in the PRM file acts as metadata for the particular pattern informing of how many steps this patterns contains in total, scale, shuffle, flam, and chain.  The remaining lines contains step 1-32. This can be a bit confusing since there are only 16 step buttons presented on the interface, but if the user holds down the (ENTER) key while programming the sequencer the note will be inserted on a half step. This means that Step 1 and Step 2 are actually just Step 1, Step 3 and 4 are actually Step 2 and so on. the 32 steps in the PRM-file thus corresponds to a full 16 step sequence on the TR-09.
+
+<details>
+  <summary>TR09-PTN1-1-01.PRM</summary>
 
 ```
-END_STEP	= 23
-SCALE	= 2
-SHUFFLE	= 50
-FLAM	= 36
+END_STEP	= 32
+SCALE	= 1
+SHUFFLE	= 0
+FLAM	= 0
 CHAIN	= 0
 STEP 1	= BD=2 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=1 TR=1 TA=0
 STEP 2	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
@@ -43,12 +69,17 @@ STEP 30	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 STEP 31	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 STEP 32	= BD=0 SD=0 LT=0 MT=0 HT=0 RS=0 HC=0 CH=0 OH=0 CC=0 RC=0 TR=0 TA=0
 ```
-In order to access these files the user must first connect the TR09 with a USB cable to a computer. Secondly the user must restart the TR09 while holding down the start button. All the lights will come on, and this means the TR09 is awaiting connection to the computer, after which a drive will become visible on the computer containing the .PRM-files.
+</details>
 
-However what if it was possible to mod this feature and transform its function into a more constructive rather than archival mode of operation? A postdigital, postphenomenological interaction between user and systems. what sort of sonic possibility would arise from this approach from a compositional perspective?
+In order to access these files the user must first connect the TR09 with a USB cable to a computer. Secondly the user must restart the TR09 while holding down the (START) button. All the lights will come on, and this means the TR09 is awaiting connection to the computer, after which a drive will become visible on the computer containing a folder called "BACKUP" wherein the .PRM-files are located.
 
 ## PRM-file generator using Node for Max
-The development of this patch was centered around the structure of the .PRM files in which the patterns of TR09 is stored. In order to be able to generate your own .PRM files I used the Node for Max objects in Max/MSP as a way to create max messages with variables of the various percussive elements as well as the initial setups of shuffle and sequencer length etc. I created the javaScript file would be accessable from within Max via the "node.script TR09Mod.js".
+What if it was possible to modify the backup feature and transform its functionality into a more constructive rather than its current non-inspiring mode of operation? What sort of compositional possibilities could arise from this post-phenomenological interaction?
+
+The development of this patch was centered around the structure of the .PRM files in which the patterns of TR09 is stored. In order to be able to generate your own .PRM files I used the Node for Max objects in Max/MSP as a way to create max messages with variables of the various percussive elements as well as the initial setups of shuffle and sequencer length etc. I created the javaScript file that would be accessable from within Max via the "node.script TR09Mod.js".
+
+<details>
+  <summary>NodeJS code for Max</summary>
 
 ```
 const maxApi = require('max-api');
@@ -191,8 +222,10 @@ maxApi.addHandler('Step_32', (BD_32, SD_32, LT_32, MT_32, HT_32, RS_32, HC_32, C
 });
 
 ```
+</details>
+
 ## Patcher
-Surrounding the node.script object is other max objects that serve to assemble the generated messages from the node script into the max text object as well as multisliders as a way to easily set the many parameters.
+Surrounding the node.script object is other max objects that serve to assemble the generated messages from the node script into the max text object as well as multisliders as a way to easily set the many parameters. Once the text file has been assembled with all the necessary information it can then be saved to the desktop as a PRM file that can then be inserted to the "BACKUP" folder from the TR-09. Once the new files have been added to the "BACKUP" the proces is completed by hitting the (ENTER) button. This will trigger the lights on the unit to blink and after a few seconds it should read (DONE) on the display of the TR-09. The unit can then be turned off and turned on again now containing the generated PRM file.
 
 <details>
   <summary>Max-patcher</summary>
@@ -591,8 +624,12 @@ bC.pWdeMdPvrY213A.SiG9Km3A+R6OzWZ9.eoRy01dPu7M+6u4+Ov8lVfC
 
 ![](./media/TR09MaxMSPPRMFileGenerator.png)
 
-## discussion
-Having made the parameters in the .PRM-files available to be adjusted through maxMSP opens it up for a more automated computer generative approach to programming drum patterns. it could be argued that the proces of actually working with this is cumbersome in comparison to using the build in sequencer or triggering the drums from a DAW. Using multisliders as a way to manipulate the many parameters in the PRM-files could be exchanged with other forms of altering the parameters. I am curious of what kinds of sonic expression can be evoked through this new approach to composing on the TR09. Making this code into a Max for Live device would make this more accessable through Ableton Live.
+## Discussion
+Having made the parameters in the .PRM-files available to be adjusted through maxMSP opens it up for a more automated computer generative approach to programming drum patterns. it could be argued that the proces of actually working with this might be too cumbersome in comparison to using the build in sequencer or triggering the drums from a DAW. Using multisliders as a way to manipulate the many parameters in the PRM-files could be exchanged with other forms of altering the parameters. I am curious of what kinds of compositional expressions could be evoked through this new way of interaction with the TR-09. Making this patch into a Max for Live device would also make this apporach more accessable through Ableton.
 
-## Source
-http://sunshine-jones.com/wp-content/uploads/2017/11/TR-09-Users-Guide.pdf
+However, before any further developments there are still a few things that needs to be made easier in terms of interacting with the max-patch. Using the multisliders feels akward due to the whole 32/16 step situation. The half-step and regular steps should somehow be separated in order to make the experience smoother for the user. Furthermore, the whole proces of generating the header first and then switching to pattern and having to press multible buttons before it renders a usable PRM file. This must be made more streamlined before considering to make this into a max for live device accesible in Ableton.
+
+## References
+- [Sunshine Jones - TR-09-Users-Guide](http://sunshine-jones.com/wp-content/uploads/2017/11/TR-09-Users-Guide.pdf)
+- [https://www.roland.com/us/products/tr-09/specifications/](https://www.roland.com/us/products/tr-09/specifications/)
+- [https://www.electronicbeats.net/the-feed/learn-to-hack-your-own-tr-09-drum-machine-with-this-diy-tutorial/](https://www.electronicbeats.net/the-feed/learn-to-hack-your-own-tr-09-drum-machine-with-this-diy-tutorial/)
